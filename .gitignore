@@ -9,3 +9,7 @@ sql/hive-thriftserver/test_warehouses
 warehouse/
 spark-warehouse/
 derby.log
+
+
+# data too large for github
+credit_card_balance.csv

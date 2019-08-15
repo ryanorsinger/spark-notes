@@ -3,7 +3,9 @@ import numpy as np
 import pyspark
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
+import multiprocessing
 
+nprocs = multiprocessing.cpu_count()
 nprocs = multiprocessing.cpu_count()
 
 spark = (pyspark.sql.SparkSession.builder
@@ -26,3 +28,25 @@ df.describe()
 
 df.withColumn('final_grade_above_90', df.final_grade >= 90).show()
 
+# list of dictionaries
+fruits = [
+    {
+        "name": "apple",
+        "price": 1.25,
+        "quantity": 5
+    },
+    {
+        "name": "kiwi",
+        "price": 3.99,
+        "quantity": 7
+    },
+    {
+        "name": "orange",
+        "price": 1.50,
+        "quantity": 8
+    },
+]
+
+fruits = spark.createDataFrame(fruits)
+
+fruits.show()
